@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Create CC Interface - CHC</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="baseStyle.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+        <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyDg5vo1T-0JBGPH6VYfnBYBEEWgfJs5jNE",
+                authDomain: "cc-http-chat.firebaseapp.com",
+                databaseURL: "https://cc-http-chat.firebaseio.com",
+                storageBucket: "cc-http-chat.appspot.com",
+            };
+            firebase.initializeApp(config);
+        </script>
+        <script src="locale/en.js"></script>
+        <script src="js/components.js"></script>
+        <script src="js/core.js"></script>
+    </head>
+    <body>
+        <div id="app" class="theme-dark">
+            <div class="sp_appbox">
+                <div class="appbox_header">Hello</div>
+                <div class="appbox_content_wrapper">
+                    <!--<div class="appbox_content">
+                        <span class="info">Hey, it looks like this is the first time you've logged in, so we're going to perform a first time setup.</span>
+                        <button class="text-button" onclick="testForm()">Next</button>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<!-- <span class="info">You'll need a login to sign in from computercraft</span> -->

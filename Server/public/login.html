@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Create User - CC HTTP Chat</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyDg5vo1T-0JBGPH6VYfnBYBEEWgfJs5jNE",
+            authDomain: "cc-http-chat.firebaseapp.com",
+            databaseURL: "https://cc-http-chat.firebaseio.com",
+            storageBucket: "cc-http-chat.appspot.com",
+          };
+          firebase.initializeApp(config);
+        </script>
+
+        <script src="https://www.gstatic.com/firebasejs/ui/live/0.4/firebase-ui-auth.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/live/0.4/firebase-ui-auth.css" />
+        <script type="text/javascript">
+            // FirebaseUI config.
+            var uiConfig = {
+            'signInSuccessUrl': 'createCC.html',
+            'signInOptions': [
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                firebase.auth.GithubAuthProvider.PROVIDER_ID,
+                firebase.auth.EmailAuthProvider.PROVIDER_ID
+            ],
+            // Terms of service url.
+            'tosUrl': 'tos.html',
+            };
+
+            // Initialize the FirebaseUI Widget using Firebase.
+            var ui = new firebaseui.auth.AuthUI(firebase.auth());
+            // The start method will wait until the DOM is loaded.
+            ui.start('#firebaseui-auth-container', uiConfig);
+        </script>
+        <style>
+            html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                background-color: #222;
+            }
+
+            #firebaseui-auth-container {
+                position: relative;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                        transform: translateY(-50%);
+            }
+
+            #badBrowse {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                white-space: nowrap;
+                font-family: Roboto, Arial, sans-serif;
+                -webkit-transform: translateX(-50%) translateY(-50%);
+                        transform: translateX(-50%) translateY(-50%);
+            }
+
+            .firebaseui-container {
+                background-color: #666;
+                border-radius: 3px;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                box-shadow: rgba(0,0,0,0.4) 0 4px 4px;
+            }
+
+            .firebaseui-title {
+                color: rgba(0,0,0,0.74);
+            }
+
+            .firebaseui-textfield.mdl-textfield .firebaseui-input {
+                border-color: rgba(0,0,0,0.23);
+            }
+
+            #firebaseui-auth-container::before {
+                content: 'Login';
+                position: absolute;
+                width: 360px;
+                height: 1.25rem;
+                left: calc(50% - 180px);
+                top: -2.5rem;
+                background-color: #333;
+                border-radius: 3px;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                padding-top: 0.635rem;
+                padding-bottom: 0.635rem;
+                text-align: center;
+                color: rgba(255,255,255,0.78);
+                font-family: Roboto;
+                font-size: 16px;
+            }
+
+            @media (max-width: 480px) {
+                .firebaseui-container {
+                    border-radius: 0;
+                }
+                #firebaseui-auth-container::before {
+                    width: 100%;
+                    left: 0;
+                    border-radius: 0;
+                }
+                .firebaseui-card-header {
+                    border-color: #868686;
+                }
+            }
+        </style>
+        <script>
+            function attachObserver() {
+                var target = document.getElementById('firebaseui-auth-container');
+
+                if (target.children.length > 1) {
+                    //It's already loaded
+                    var toDel = document.getElementById("badBrowse");
+                    toDel.parentElement.removeChild(toDel);
+                    return;
+                }
+
+                var observer;
+                observer = new MutationObserver(function(mutations) {
+                    var toDel = document.getElementById("badBrowse");
+                    toDel.parentElement.removeChild(toDel);
+                    observer.disconnect();
+                });
+
+                var config = { attributes: true, childList: true, characterData: true };
+
+                observer.observe(target, config);
+            }
+        </script>
+    </head>
+    <body onload="attachObserver()">
+        <div id="firebaseui-auth-container"><div id="badBrowse">Currently, private browsing in Safari is not supported with the current login system, please exit private browsing.</div></div>
+    </body>
+</html>

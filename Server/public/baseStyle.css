@@ -1,0 +1,281 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: Roboto;
+}
+
+* {
+    transition: background-color 0.2s linear, color 0.2s linear;
+}
+
+.theme-dark {
+    background-color: #222;
+    width: 100%;
+    height: 100%;
+}
+
+.theme-dark > .sp_appbox {
+    background-color: #555;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.sp_appbox {
+    position: relative;
+    width: 22.5rem;
+    height: 2.5rem;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 3px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: rgba(0,0,0,0.3) 0 4px 4px;
+    transition: height 0.35s cubic-bezier(0.4, 0.0, 0.2, 1), background-color 0.2s linear, color 0.2s linear;
+}
+
+.appbox_header {
+    content: '';
+    position: absolute;
+    width: 360px;
+    height: 1.25rem;
+    left: calc(50% - 180px);
+    top: 0;
+    background-color: #333;
+    border-radius: 3px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-top: 0.635rem;
+    padding-bottom: 0.635rem;
+    text-align: center;
+    color: rgba(255,255,255,0.78);
+    font-family: Roboto;
+    font-size: 16px;
+    transition: top 0.35s cubic-bezier(0.4, 0.0, 0.2, 1), background-color 0.2s linear, color 0.2s linear;
+    box-shadow: rgba(0,0,0,0.3) 0 4px 4px;
+    /*z-index: 40;*/
+}
+
+.appbox_header.init {
+    top: -2.5rem;
+}
+
+.appbox_content_wrapper {
+    overflow: hidden;
+    height: inherit;
+    position: relative;
+    background-color: #555;
+    border-radius: 3px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    transform: translate3d(0, 0, 0); /* for hardware acceleration */
+}
+
+.appbox_content {
+    overflow: hidden;
+    height: inherit;
+    position: relative;
+    left: 0;
+    transition: left 0.35s cubic-bezier(0.4, 0.0, 0.2, 1), background-color 0.2s linear, color 0.2s linear;
+    transform: translate3d(0, 0, 0); /* for hardware acceleration */
+}
+
+.appbox_content.transition {
+    left: -100%;
+}
+
+.appbox_content > .info {
+    display: inline-block;
+    text-align: justify;
+}
+
+.appbox_content > .label {
+    display: inline-block;
+    text-align: justify;
+    margin-bottom: 2px;
+}
+
+.appbox_content > * {
+    margin: 24px;
+    margin-top: 0;
+}
+
+.appbox_content > *:nth-child(1) {
+    margin-top: 24px;
+}
+
+.text-button {
+    position: relative;
+    margin: auto;
+    display: block;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    border: none;
+    background: rgb(63,81,181);
+    color: rgb(255,255,255);
+    border-radius: 2px;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    will-change: box-shadow;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1),background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),color 0.2s cubic-bezier(0.4, 0, 0.2, 1),top 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    line-height: 32px;
+    vertical-align: middle;
+    padding-left: 24px;
+    padding-right: 24px;
+    text-rendering: auto;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.2),0 1px 5px 0 rgba(0,0,0,0.12);
+    height: 34px;
+    overflow: hidden;
+}
+
+.text-button .btntxt {
+    position: relative;
+    top: 0;
+    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),color 0.2s cubic-bezier(0.4, 0, 0.2, 1),top 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.text-button:active {
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12),0 2px 4px -1px rgba(0,0,0,0.2) !important;
+}
+
+.text-button:disabled {
+    color: rgba(255,255,255,0.26);
+    background-color: rgba(63,81,181,0.26);
+    box-shadow: none;
+    cursor: default;
+}
+
+.textbox > input {
+    width: 100%; /*calc(100% - 48px);*/
+    border: 0;
+    background: #555;
+    border-bottom: rgba(0,0,0,.5) 1px solid;
+    height: 1em;
+    font-size: 16px;
+    outline: none;
+    padding: 4px 0;
+    color: rgba(255,255,255,.5);
+    font-family: Roboto, Arial, sans-serif;
+    background: rgba(0,0,0,0.08);
+}
+
+.textbox .validIndicator {
+    content: '';
+    width: 1em;
+    height: 1em;
+    margin-bottom: -16px;
+    position: relative;
+    display: block;
+    top: 4px;
+    left: calc(100% - 1em - 4px);
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    border-radius: 50%;
+    border: 1px solid;
+    border-color: #1DE9B6 rgba(0,0,0,0.2) #1DE9B6 rgba(0,0,0,0.2);
+    animation: rotate 2s linear infinite;
+    width: 1em;
+    height: 1em;
+}
+.spinner::after {
+    content: '';
+    animation: rotate 6s linear infinite;
+    border-radius: 50%;
+    border: 1px solid;
+    display: block;
+    border-color: transparent #EEFF41 transparent #EEFF41;
+    left: -1px;
+    top: -1px;
+    position: relative;
+    width: 1em;
+    height: 1em;
+}
+
+.text-button .spinner {
+    position: absolute;
+    left: calc(50% - 0.5em);
+    top: -1.5em;
+    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),color 0.2s cubic-bezier(0.4, 0, 0.2, 1),top 0.2s cubic-bezier(0.4, 0, 0.2, 1)
+}
+
+.validIndicator.spinner {
+    margin-bottom: -18px;
+    top: 3px;
+    left: calc(100% - 1em - 4px);
+}
+
+.validIndicator.spinner::after {
+    width: 1em;
+    height: 1em;
+}
+
+.textbox.invalid .validIndicator::before {
+    content: '';
+    width: 1em;
+    height: 2px;
+    display: block;
+    transform: rotate(-45deg);
+    position: absolute;
+    background-color: #cc0000;
+    top: .45em;
+}
+
+.textbox.invalid .validIndicator::after {
+    content: '';
+    width: 1em;
+    height: 2px;
+    display: block;
+    transform: rotate(45deg);
+    position: absolute;
+    background-color: #cc0000;
+    top: .45em;
+}
+
+.textbox.valid .validIndicator::before {
+    content: '';
+    width: .7em;
+    height: .35em;
+    display: block;
+    transform: rotate(-50deg);
+    border: solid #008800;
+    border-width: 0 0 2px 2px;
+    position: absolute;
+    top: 0.1em;
+}
+
+.textbox.invalid > input {
+    background-color: rgba(180, 0, 0, 0.08);
+}
+
+.textbox::after {
+    content: '';
+    width: 0;
+    height: 1px;
+    display: block;
+    bottom: 1px;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    position: relative;
+    background-color: rgb(62, 100, 236);
+    transition: width 0.25s cubic-bezier(0.4, 0.0, 0.2, 1), background-color 0.2s linear, color 0.2s linear;
+}
+
+.textbox.active::after {
+    width: 100%;
+}
